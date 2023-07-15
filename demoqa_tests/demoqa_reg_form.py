@@ -4,16 +4,11 @@ from selene import browser, be, have
 from selene.core import command
 
 class RegistrationPage:
-
     def __init__(self):
         self.registered_user_data = browser.element('.table').all('td').even
 
     def open(self):
         browser.open('automation-practice-form')
-        # browser.all('[id^=google_ads][id$=container__]').with_(timeout=10).wait_until(
-        #     have.size_less_than_or_equal(3)
-        # )
-        # browser.all('id^=google_ads][id$=container__]').perform(command.js.remove)
 
     def fill_first_name(self, value):
         browser.element('[id=firstName]').should(be.blank).type(value)
@@ -67,7 +62,6 @@ class RegistrationPage:
         browser.element('#submit').perform(command.js.click)
 
 class ResultRegistrationPage:
-
     def validate_form(self, inform, name, email, gender, phone, date_of_birth, subject, hobbie, picture, address, state, city):
         # Проверка формы
         browser.element('.modal-header').should(have.exact_text(inform))
