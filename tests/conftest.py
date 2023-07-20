@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pytest
 from selene.support.shared import browser
 from selenium.webdriver.chrome.service import Service as ChromeService

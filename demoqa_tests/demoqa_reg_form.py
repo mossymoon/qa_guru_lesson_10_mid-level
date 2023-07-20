@@ -1,7 +1,10 @@
-import os
+
 
 from selene import browser, be, have
 from selene.core import command
+
+from tests import paths
+
 
 class RegistrationPage:
     def __init__(self):
@@ -38,8 +41,8 @@ class RegistrationPage:
         browser.element('[for="hobbies-checkbox-1"]').perform(command.js.scroll_into_view)
         browser.element('[for="hobbies-checkbox-1"]').click()
 
-    def select_picture(self, file):
-        browser.element('#uploadPicture').set_value(os.path.abspath('../tests/resources/picture.jpeg'))
+    def select_picture(self, value):
+        browser.element('#uploadPicture').send_keys(paths.get_path_to_photo(value))
 
     def fill_current_address(self, address):
         browser.element('[id=currentAddress]').type(address)
