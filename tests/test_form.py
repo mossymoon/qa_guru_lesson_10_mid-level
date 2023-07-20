@@ -7,7 +7,7 @@ def test_dificult_form():
     registration_page.fill_first_name('Ivan')
     registration_page.fill_last_name('Ivanov')
     registration_page.fill_email('ivan@co.com')
-    registration_page.fill_gender()
+    registration_page.fill_gender('Male')
     registration_page.fill_phone_number('9999999999')
     registration_page.fill_date_of_birth('1989', 'November', '28')
     registration_page.fill_subject('Maths')

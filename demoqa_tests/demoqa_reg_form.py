@@ -1,5 +1,3 @@
-
-
 from selene import browser, be, have
 from selene.core import command
 
@@ -22,8 +20,8 @@ class RegistrationPage:
     def fill_email(self, value):
         browser.element('[id=userEmail]').should(be.blank).type(value)
 
-    def fill_gender(self):
-        browser.element('.custom-control-label').click()
+    def fill_gender(self, value):
+        browser.element(f'[name=gender][value={value}]+label').click().click()
 
     def fill_phone_number(self, value):
         browser.element('[id=userNumber]').should(be.blank).type(value)
@@ -38,8 +36,7 @@ class RegistrationPage:
         browser.element('[id="subjectsInput"]').click().send_keys(value).press_enter()
 
     def fill_hobbies(self):
-        browser.element('[for="hobbies-checkbox-1"]').perform(command.js.scroll_into_view)
-        browser.element('[for="hobbies-checkbox-1"]').click()
+        browser.element('[for="hobbies-checkbox-1"]').perform(command.js.scroll_into_view).click()
 
     def select_picture(self, value):
         browser.element('#uploadPicture').send_keys(paths.get_path_to_photo(value))
